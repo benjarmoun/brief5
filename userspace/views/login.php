@@ -20,17 +20,20 @@ if(isset($_POST['submit'])){
                 <div class="card-body bg-light">
                     <div class="table-responsive">
                         <div class="card-header">
-                            <h3 class="text-center">Connexion </h3>
+                            <h3 class="text-center">Log In</h3>
                         </div>
                         <form method="post" class="mr-1" >
-                            <div class="form-group">
-                                <input type="text" name="username" placeholder="User name" class="form-control" >
+                            <div class="form-group p-1">
+                                <input type="text" name="usern" placeholder="User name" class="form-control" >
                             </div>
-                            <div class="form-group">
+                            <div class="form-group p-1">
                                 <input type="password" name="password" placeholder="Password" class="form-control">
                             </div>
-                            <button name="submit" class="btn btn-sm btn-primary">Connexion</button>
+                            <button name="submit" class="btn btn-sm btn-primary m-1">Log In</button>
                         </form>
+                        <div>
+                            <a href="<?php echo BASE_URL;?>register" class="btn btn-link p-1" > Singn Up</a>
+                        </div>
                                         
                     </div>
                 </div>

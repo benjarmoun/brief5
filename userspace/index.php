@@ -5,9 +5,9 @@ require_once './controllers/HomeController.php';
 $home = new HomeController();
 
 
-$pages = ['home','add','update','delete','logout','addReservation','reservations'];
+$pages = ['home','homee','homeee','add','update','delete','logout','addReservation','reservations'];
 
-if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
+if(isset($_SESSION['log']) && $_SESSION['log'] === true){
         if(isset($_GET['page'])){
             if(in_array($_GET['page'] , $pages)){
                 $page = $_GET['page'];
@@ -18,9 +18,15 @@ if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
         }else{
             $home->index('home');
         }
-    }else{
+    }else
+        if( isset($_GET['page']) && $_GET['page'] === 'register'){ 
+            $home->index('register');
+        }
+    else{
         $home->index('login');
     }
+        
+    
 
 ?>
 

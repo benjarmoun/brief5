@@ -4,11 +4,11 @@
         if(isset($_POST['submit'])){
                         $data = array(
                             'flight_id' => $_POST['flight_id'],
-                            // 'passenger_id' => $_POST['passenger_id'],
                             'passenger_fname' => $_POST['passenger_fname'],
                             'passenger_lname' => $_POST['passenger_lname'],
                             'depart' => $_POST['depart'],
                             'arrive' => $_POST['arrive'],
+                            'depart_date' => $_POST['depart_date'],
                         );
                         // die(print_r($data));
                         $result = Reservation::add($data);

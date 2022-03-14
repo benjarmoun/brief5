@@ -6,6 +6,7 @@ if(isset($_POST['find'])){
 }else{
     $data = new ReservationController();
     $reservations = $data->getAllReservations(); 
+    
 }
 
 ?>
@@ -26,7 +27,7 @@ if(isset($_POST['find'])){
                             <i class="fas fa-home"></i>
                         </a>
                         <a href="<?php echo BASE_URL;?>logout" title="Log Out" class="btn btn-link btn-sm ml-2 mb-2">
-                            <i class="fas fa-user ml-1"> <?php echo $_SESSION['username'];?></i>
+                            <i class="fas fa-user ml-1"> <?php echo $_SESSION['usern'];?></i>
                         </a>
 
                         <form class="float-right d-flex flex-row mb-2" method="post" action="">
@@ -37,12 +38,13 @@ if(isset($_POST['find'])){
                             <thead>
                                 <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">flight Number</th>
+                                <th scope="col">flight id</th>
                                 <th scope="col">Depart</th>
                                 <th scope="col">Arrivé</th>
                                 <th scope="col">Date de depart</th>
-                                <th scope="col">prix</th>
-                                <th scope="col">Nbr de places</th>
+                                <th scope="col">pass id</th>
+                                <th scope="col">pass fname</th>
+                                <th scope="col">pass Lname</th>
                                 <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -54,6 +56,7 @@ if(isset($_POST['find'])){
                                         <td><?php echo $reservation['flight_id'];?></td>
                                         <td><?php echo $reservation['depart'];?></td>
                                         <td><?php echo $reservation['arrive'];?></td>
+                                        <td><?php echo $reservation['depart_date'];?></td>
                                         <td><?php echo $reservation['passenger_id'];?></td>
                                         <td><?php echo $reservation['passenger_fname'];?></td>
                                         <td><?php echo $reservation['passenger_lname'];?></td>

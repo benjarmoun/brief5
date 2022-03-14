@@ -91,4 +91,19 @@
         }
     }
 
+    static public function searchEmploye2($data){
+        $depart = $data['depart'];
+        $arrive = $data['arrive'];
+        $dated = $data['dated'];
+        // die(var_dump($dated));
+        try{
+           $query = 'SELECT * FROM flight WHERE depart LIKE ? and arrive LIKE ? and date_depart LIKE ?';
+           $stmt = DB::connect()->prepare($query);
+           $stmt->execute(array('%'.$depart.'%','%'.$arrive.'%','%'.$dated.'%'));
+            return $employes= $stmt->fetchAll();
+        } catch(PDOExeption $ex){
+           echo 'erreur' . $ex->getMessage();
+        }
+    }
+
 }

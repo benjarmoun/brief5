@@ -1,7 +1,7 @@
 <?php
  class Reservation {
     static public function add($data){
-        $stmt = DB::connect()->prepare('INSERT INTO reservation(flight_id,passenger_fname,passenger_lname,depart,arrive) VALUES(:flight_id,:passenger_fname,:passenger_lname,:depart,:arrive);');
+        $stmt = DB::connect()->prepare('INSERT INTO reservation(flight_id,passenger_fname,passenger_lname,depart,arrive,depart_date) VALUES(:flight_id,:passenger_fname,:passenger_lname,:depart,:arrive,:depart_date);');
         
         $stmt->bindParam(':flight_id',$data['flight_id']);
         // $stmt->bindParam(':passenger_id',$data['passenger_id']);
@@ -9,6 +9,7 @@
         $stmt->bindParam(':passenger_lname',$data['passenger_lname']);
         $stmt->bindParam(':depart',$data['depart']);
         $stmt->bindParam(':arrive',$data['arrive']);
+        $stmt->bindParam(':depart_date',$data['depart_date']);
 
         if($stmt->execute()){
             // echo "<script>alert('yes');</script>";

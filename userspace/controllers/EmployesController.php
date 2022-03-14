@@ -25,6 +25,18 @@
           return $employes;
       }
 
+      public function findEmployes2(){
+        if(isset($_POST['depart']) && isset($_POST['arrive'])){
+            $data= array(
+                'depart' => $_POST['depart'],
+                'arrive' => $_POST['arrive'],
+                'dated' => $_POST['dated']
+            );
+        }
+        $employes = Employe::searchEmploye2($data);
+        return $employes;
+    }
+
       public function addEmploye(){
             if(isset($_POST['submit'])){
                 $data = array(
