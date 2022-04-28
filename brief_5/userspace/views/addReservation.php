@@ -2,18 +2,10 @@
 if(isset($_POST['id'])){
     $Flight = new FlightsController();
     $flight = $Flight->getOneFlight();
-    // die(print_r($flight));
 }
-// $nbr_pass = 1;
-// if(isset($_POST['nbr_pass'])){
-//     $nbr_pass = $_POST['nbr_pass'];
-//     // die(print_r($nbr_pass));
-// }
 
 if(isset($_POST['submit'])){
-    // if(isset($_POST['nbbPlace']))
-    //     $nbr_pass = $_POST['nbbPlace'];
-    $nbPlaces=$_POST['nbbPlace'];
+    // $nbPlaces=$_POST['nbbPlace'];
     $newReservation = new ReservationController();
     $newReservation->addReservation();
 }

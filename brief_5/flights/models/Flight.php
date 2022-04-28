@@ -52,9 +52,7 @@
         $stmt->bindParam(':date_depart',$data['date_depart']);
         $stmt->bindParam(':prix',$data['prix']);
         $stmt->bindParam(':nb_places',$data['nb_places']);
-        // die (print_r($data));
         if($stmt->execute()){
-            // echo "<script>alert('yes');</script>";
             return 'OK';
         }else{
             echo "<script>alert('No');</script>";

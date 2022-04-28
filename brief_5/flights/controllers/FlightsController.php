@@ -35,9 +35,7 @@
                     'prix' => $_POST['prix'],
                     'nb_places' => $_POST['nb_places'],
                 );
-                // die(print_r($data));
                 $result = Flight::add($data);
-                // die(print_r($result));
                 if($result == 'OK'){
                     Session::set('success','flight added successfully');
                     Redirect::to('home');
@@ -58,9 +56,7 @@
                 'prix' => $_POST['prix'],
                 'nb_places' => $_POST['nb_places'],
             );
-            // die(print_r($data));
             $result = Flight::update($data);
-            // die(print_r($result));
             if($result === 'OK'){
                 Session::set('success','flight updated successfully');
                 Redirect::to('home');

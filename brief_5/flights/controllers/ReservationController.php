@@ -14,9 +14,7 @@
                     'arrive' => $_POST['arrive'],
                     'depart_date' => $_POST['depart_date'],
                 );
-                // die(print_r($data));
                 $result = Reservation::add($data);
-                // die(print_r($result));
                 if($result == 'OK'){
                     Session::set('success','flight booked successfully');
                     Redirect::to('home');

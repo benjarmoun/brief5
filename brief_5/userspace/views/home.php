@@ -1,10 +1,9 @@
 <?php
 
-if(isset($_POST['find']) && isset($_POST['round_trip']) ? 1 : 0){
+if (isset($_POST['find']) && isset($_POST['round_trip']) ? 1 : 0) {
     $data = new FlightsController();
-    $flights = $data->findFlights2(); 
-    
-}else {
+    $flights = $data->findFlights2();
+} else {
     if (isset($_POST['find'])) {
         $data = new FlightsController();
         $flights = $data->findFlights();
@@ -13,7 +12,6 @@ if(isset($_POST['find']) && isset($_POST['round_trip']) ? 1 : 0){
         $flights = $data->getAllFlights();
     }
 }
-// die(($_POST['round_trip']));
 ?>
 
 <div class="d-flex" id="wrapper">
@@ -34,7 +32,6 @@ if(isset($_POST['find']) && isset($_POST['round_trip']) ? 1 : 0){
                     class="fas fa-power-off me-2"></i>Logout</a>
         </div>
     </div>
-    <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -136,7 +133,7 @@ if(isset($_POST['find']) && isset($_POST['round_trip']) ? 1 : 0){
                             </thead>
                             <tbody>
                                 
-                                <?php foreach($flights as $flight):
+                                <?php foreach ($flights as $flight):
                                     ?>
                                     
                                     <tr>
@@ -149,7 +146,11 @@ if(isset($_POST['find']) && isset($_POST['round_trip']) ? 1 : 0){
                                         <td><?php echo $flight['nb_places'];?></td>
                                         <td >
                                             <form method="post" class="mr-1" action="addReservation">
-                                                <input type="hidden" name="nbbPlace" value="<?php if(isset($_POST['find'])) echo $_POST['nbr_pass']; else echo $_POST['nbr_pass']=1?>">
+                                                <input type="hidden" name="nbbPlace" value="<?php if (isset($_POST['find'])) {
+                                        echo $_POST['nbr_pass'];
+                                    } else {
+                                        echo $_POST['nbr_pass']=1;
+                                    }?>">
                                                 <input type="hidden" name="id" value="<?php echo $flight['id'];?>">
                                                 <button id="test" class="btn btn-primary">BOOK</button>
                                             </form>

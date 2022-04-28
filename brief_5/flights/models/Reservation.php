@@ -13,7 +13,6 @@
         $stmt->bindParam(':depart_date',$data['depart_date']);
 
         if($stmt->execute()){
-            // echo "<script>alert('yes');</script>";
             return 'OK';
         }else{
             echo "<script>alert('No');</script>";

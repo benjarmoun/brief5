@@ -29,7 +29,6 @@ if(isset($_POST['find'])){
                     class="fas fa-power-off me-2"></i>Logout</a>
         </div>
     </div>
-    <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -88,7 +87,6 @@ if(isset($_POST['find'])){
                                 <th scope="col">passenger date of birth</th>
                                 <th scope="col">pass fname</th>
                                 <th scope="col">pass Lname</th>
-                                <!-- <th scope="col">Actions</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -103,17 +101,7 @@ if(isset($_POST['find'])){
                                         <td><?php echo $reservation['passenger_birth_date'];?></td>
                                         <td><?php echo $reservation['passenger_fname'];?></td>
                                         <td><?php echo $reservation['passenger_lname'];?></td>
-                                        <!-- <td class="d-flex flex-row">
-                                            <form method="post" class="mr-1" action="updateReservation">
-                                                <input type="hidden" name="id" value="<?php echo $reservation['id'];?>" >
-                                                
-                                                <button class="btn "><i class="fa fa-edit"></i></button>
-                                            </form>
-                                            <form method="post" class="mr-1" action="delete">
-                                                
-                                                <button class="btn "><i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </td>                                     -->
+                                       
                                     </tr>
                                 <?php endforeach;?>
                             </tbody>

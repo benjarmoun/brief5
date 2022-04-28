@@ -2,7 +2,6 @@
 class User{
     static public function login($data){
         $usern = $data['usern'];
-        // die(print_r($data));
         try{
            $query = 'SELECT * FROM user WHERE usern = :usern';
            $stmt = DB::connect()->prepare($query);
@@ -28,7 +27,6 @@ class User{
         $stmt->bindParam(':tele',$data['tele']);
 
         if($stmt->execute()){
-            // echo "<script>alert('yes');</script>";
             return 'OK';
         }else{
             echo "<script>alert('No');</script>";

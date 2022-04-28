@@ -25,20 +25,9 @@
   border-radius: 100%;
 }
 
-/* #wrapper {
-  overflow-x: hidden;
-  background-image: linear-gradient(
-    to right,
-    #00ff84,
-    #c2f5de,
-    #cbf7e4,
-    #d4f8ea,
-    #ddfaef
-  );
-} */
+
 
 #sidebar-wrapper {
-  /* min-height: 100vh; */
   margin-left: -15rem;
   -webkit-transition: margin 0.25s ease-out;
   -moz-transition: margin 0.25s ease-out;
