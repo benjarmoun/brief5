@@ -6,9 +6,9 @@ if(isset($_POST['find'])){
     $reservations = $data->findReservation();
 }else{
     $data = new ReservationController();
-    $reservations = $data->getAllReservations();
+    $reservations = $data->getMyReservation($_SESSION['user_id']);
+    // die($reservations);
 }
-
 ?>
 
 <div class="d-flex" id="wrapper">

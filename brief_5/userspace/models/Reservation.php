@@ -31,6 +31,15 @@
         $stmt = null;
     }
 
+    static public function getMyReservation($id){
+        $stmt = DB::connect()->prepare('SELECT * FROM reservation where user_id = :id');
+        $stmt->execute(array(":id" => $id));
+        $stmt->execute();
+        return $stmt->fetchAll();
+        $stmt->close();
+        $stmt = null;
+    }
+
     static public function getid(){
         $stmt = DB::connect()->prepare('SELECT  FROM reservation where ');
         $stmt->execute();
@@ -51,6 +60,22 @@
            echo 'erreur' . $ex->getMessage();
         }
     }
+
+    // static public function getmyReservation($id){
+    //     $id = $id;
+    //     try{
+    //         $query = 'SELECT * FROM reservation WHERE user_id = :id';
+    //         // die(print_r($query));
+            
+    //        $stmt = DB::connect()->prepare($query);
+    //        $stmt->execute(array(":id" => $id));
+    //        $reservation = $stmt -> fetch(PDO::FETCH_OBJ);
+    //        die(print_r($reservation));
+    //        return $reservation;
+    //     } catch(PDOExeption $ex){
+    //        echo 'erreur' . $ex->getMessage();
+    //     }
+    // }
 
     static public function searchReservation($data){
         $search = $data['search'];

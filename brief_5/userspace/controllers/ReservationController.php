@@ -43,7 +43,18 @@
         $reservation = Reservation::getReservation($data);
         return $reservation;
         }
-      }
+    }
+
+    public function getMyReservation($id)
+      {
+        // $data = array(
+        //     'id' => $id
+        // );
+        
+        $reservation = Reservation::getmyReservation($id);
+        return $reservation;
+    
+    }
 
     public function findReservation(){
         if(isset($_POST['search'])){

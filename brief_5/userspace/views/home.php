@@ -1,13 +1,19 @@
 <?php
 
-if(isset($_POST['find'])){
+if(isset($_POST['find']) && isset($_POST['round_trip']) ? 1 : 0){
     $data = new FlightsController();
     $flights = $data->findFlights2(); 
-
-}else{
-    $data = new FlightsController();
-    $flights = $data->getAllFlights(); 
+    
+}else {
+    if (isset($_POST['find'])) {
+        $data = new FlightsController();
+        $flights = $data->findFlights();
+    } else {
+        $data = new FlightsController();
+        $flights = $data->getAllFlights();
+    }
 }
+// die(($_POST['round_trip']));
 ?>
 
 <div class="d-flex" id="wrapper">
@@ -72,15 +78,27 @@ if(isset($_POST['find'])){
                                 <div class="col-sm-6 p-3">
                                     <label class="form-label" for="depart" >Depart</label>
                                     <input type="text" class="form-control mb-3" name="depart" placeholder="Depart">
-                                    <label class="form-label" for="arrive">Arrive</label>
-                                    <input type="text" class="form-control mb-3" name="arrive" placeholder="Arrive">
-                                </div>
-                                <div class="col-sm-6 p-3">
+
                                     <label class="form-label" for="nbr_pass">Number of passengers</label>
                                     <input type="number" class="form-control mb-3" id="nbr_pass" name="nbr_pass" min="1" value="1" />
                                     
                                     <label class="form-label" for="dated">Depart date</label>
                                     <input type="date" class="form-control mb-3" name="dated"  min="<?= date("Y-m-d") ?>">
+                                </div>
+                                <div class="col-sm-6 p-3">
+                                    <label class="form-label" for="arrive">Destination</label>
+                                    <input type="text" class="form-control mb-3" name="arrive" placeholder="Arrive">
+
+                                    <div class="mt-5 mb-4" style="vertical-align: middle;">
+                                        <input type="checkbox" name="round_trip" value="round_trip" id="round_trip" onchange="displayReturnDateForm()"> &nbsp
+                                        <label class="form-label" for="arrive">Round-trip</label>
+                                    </div>
+                                    <div id="return_date" style="display:none;">
+                                        <label class="form-label" for="datea">Return date</label>
+                                        <input type="date" class="form-control mb-3" name="datea"  min="<?= date("Y-m-d") ?>">
+                                    </div>
+
+                                    
                                 </div>
                             </div>
                             <button class="btn btn-primary mt-0 m-3" name="find"  type="submit"><i class="fas fa-search"></i></button>
@@ -119,9 +137,6 @@ if(isset($_POST['find'])){
                             <tbody>
                                 
                                 <?php foreach($flights as $flight):
-                                // if(empty($flights)){
-                                    
-                                // }
                                     ?>
                                     
                                     <tr>
@@ -135,16 +150,9 @@ if(isset($_POST['find'])){
                                         <td >
                                             <form method="post" class="mr-1" action="addReservation">
                                                 <input type="hidden" name="nbbPlace" value="<?php if(isset($_POST['find'])) echo $_POST['nbr_pass']; else echo $_POST['nbr_pass']=1?>">
-                                                <input type="hidden" name="id" value="<?php echo $flight['id'];?>" >
-                                                <!-- <input type="hidden" class="form-control mb-3" id="nbr_pass" name="nbr_pass" value="1" /> -->
-                                                <!-- <input type="hidden" name="depart" value="<?php echo $flight['depart'];?>" >
-                                                <input type="hidden" name="arrive" value="<?php echo $flight['arrive'];?>" > -->
+                                                <input type="hidden" name="id" value="<?php echo $flight['id'];?>">
                                                 <button id="test" class="btn btn-primary">BOOK</button>
                                             </form>
-                                            <!-- <form method="post" class="mr-1" action="delete">
-                                                <input type="hidden" name="id" value="<?php echo $flight['id'];?>" >
-                                                <button class="btn "><i class="fa fa-trash"></i></button>
-                                            </form> -->
                                         </td>                                    
                                     </tr>
                                 <?php endforeach;?>
@@ -172,4 +180,21 @@ if(isset($_POST['find'])){
     toggleButton.onclick = function () {
         el.classList.toggle("toggled");
     };
+
+
+</script>
+<script>
+function displayReturnDateForm() {
+    var input = document.querySelector('#round_trip');
+
+    input.addEventListener('change', function() {
+        if (input.checked) {
+            document.getElementById("return_date").style.display = "block";
+        } else {
+            document.getElementById("return_date").style.display = "none";
+        }
+    });
+}
+
+displayReturnDateForm();
 </script>

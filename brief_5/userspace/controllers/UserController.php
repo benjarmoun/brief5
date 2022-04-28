@@ -16,7 +16,7 @@
                 Redirect::to('login');
             }
             
-        }    
+        }
     }
 
     public function register(){
